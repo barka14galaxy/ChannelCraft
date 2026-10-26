@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         item {
                             Text(
-                                text = "Your television, your way.",
+                                "Your television, your way.",
                                 style = MaterialTheme.typography.headlineSmall
                             )
                         }
@@ -74,7 +75,7 @@ class MainActivity : ComponentActivity() {
 
                         item {
                             Text(
-                                text = when (tab) {
+                                when (tab) {
                                     "Guide" ->
                                         "TV Guide\nProgram listings will appear here."
                                     "Recordings" ->
