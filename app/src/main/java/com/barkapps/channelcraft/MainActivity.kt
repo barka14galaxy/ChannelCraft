@@ -1,3 +1,4 @@
+
 package com.barkapps.channelcraft
 
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.compose.ui.unit.dp
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             MaterialTheme {
                 var tab by remember { mutableStateOf("Live TV") }
@@ -26,12 +28,12 @@ class MainActivity : ComponentActivity() {
                     },
                     bottomBar = {
                         NavigationBar {
-                            listOf("Live TV", "Guide", "Recordings").forEach {
+                            listOf("Live TV", "Guide", "Recordings").forEach { item ->
                                 NavigationBarItem(
-                                    selected = tab == it,
-                                    onClick = { tab = it },
+                                    selected = tab == item,
+                                    onClick = { tab = item },
                                     icon = {},
-                                    label = { Text(it) }
+                                    label = { Text(item) }
                                 )
                             }
                         }
@@ -46,10 +48,11 @@ class MainActivity : ComponentActivity() {
                     ) {
                         item {
                             Text(
-                                "Your television, your way.",
+                                text = "Your television, your way.",
                                 style = MaterialTheme.typography.headlineSmall
                             )
                         }
+
                         item {
                             OutlinedTextField(
                                 value = playlist,
@@ -59,6 +62,7 @@ class MainActivity : ComponentActivity() {
                                 singleLine = true
                             )
                         }
+
                         item {
                             Button(
                                 onClick = {},
@@ -67,12 +71,16 @@ class MainActivity : ComponentActivity() {
                                 Text("Add Playlist")
                             }
                         }
+
                         item {
                             Text(
-                                when (tab) {
-                                    "Guide" -> "TV Guide\nProgram listings will appear here."
-                                    "Recordings" -> "Recordings\nYour saved recordings will appear here."
-                                    else -> "Live TV\nAdd a playlist to get started."
+                                text = when (tab) {
+                                    "Guide" ->
+                                        "TV Guide\nProgram listings will appear here."
+                                    "Recordings" ->
+                                        "Recordings\nYour saved recordings will appear here."
+                                    else ->
+                                        "Live TV\nAdd a playlist to get started."
                                 }
                             )
                         }
